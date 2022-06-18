@@ -7,6 +7,17 @@ function App() {
   function executeCommands() {
     invoke('simple_command')
   }
+
+  function executeCommandWithMessage() {
+    const textarea1 = document.getElementById("textarea1",)! as HTMLTextAreaElement;
+    const input1 = (document.getElementById("input1") as HTMLInputElement).value;
+
+    invoke('command_with_message', { message: input1 }).then(message => {
+      console.log('command_with_messge', message);
+      textarea1.value += "From command_with_messge: " + message + '\r\n';
+    })
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -24,6 +35,11 @@ function App() {
         </a>
         <p>hello</p>
         <button onClick={executeCommands}>Click to execute command</button>
+        <div>
+          <input id="input1"></input>
+          <button onClick={executeCommandWithMessage}>Click to execute command</button>
+          <textarea id="textarea1"></textarea>
+        </div>
       </header>
     </div>
   );
