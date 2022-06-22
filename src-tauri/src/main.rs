@@ -5,7 +5,7 @@
 
 #[tauri::command]
 fn simple_command() {
-    println!("I was invoked from JS!");
+  println!("I was invoked from JS!");
 }
 
 #[tauri::command]
